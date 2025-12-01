@@ -1,0 +1,246 @@
+/* 기본 변수 설정 (Login.module.css와 유사) */
+:root {
+  --background-color: #222;
+  --card-background: #111;
+  --text-color: #f5f5f5;
+  --input-background: #0a0a0a;
+  --border-color: #333;
+  --primary-bg: #fff; /* 회원가입 버튼 배경 */
+  --primary-text: #000;
+  --success-color: #38c172; /* 성공 (녹색) */
+  --error-color: #e3342f; /* 오류 (빨간색) */
+  --link-color: #ffc107; /* 링크 색상 (노란색) */
+  --disabled-bg: #444; /* 비활성화 버튼 배경 */
+}
+
+/* 전체 컨테이너 스타일 */
+.signupContainer {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  padding: 20px;
+  /* 배경 격자 패턴 */
+  background-image: linear-gradient(
+      to right,
+      var(--border-color) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* 회원가입 카드 스타일 */
+.signupCard {
+  background-color: var(--card-background);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 400px; /* 데스크톱/태블릿 기준 최대 너비 */
+  color: var(--text-color);
+  text-align: center;
+}
+
+/* 로고 및 서브타이틀 */
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  color: #aaa;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+/* 폼 스타일 */
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+/* 인풋 그룹 */
+.inputGroup {
+  margin-bottom: 10px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* 인풋과 버튼을 감싸는 div (중복확인 버튼 때문에 필요) */
+.inputWithButton {
+  display: flex;
+  gap: 10px;
+}
+
+.input {
+  flex-grow: 1;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--input-background);
+  color: var(--text-color);
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-bg);
+}
+
+/* 유효성 검사 성공/실패 시 테두리 색상 */
+.inputGroup.error .input,
+.inputGroup.error .inputWithButton .input {
+  border-color: var(--error-color);
+}
+
+.successBorder {
+  border-color: var(--success-color) !important;
+}
+
+/* 에러 메시지 */
+.errorMessage {
+  color: var(--error-color);
+  font-size: 0.8rem;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+/* 중복 확인 버튼 */
+.checkButton {
+  padding: 0 15px; /* 높이는 .input에 맞춰짐 */
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 */
+  transition: background-color 0.2s, color 0.2s;
+  /* 높이를 .input과 맞추기 위한 설정 */
+  height: 43px; /* 12px padding + 1px border * 2 + 17px line-height (약간의 조정) */
+}
+
+/* 중복 확인 버튼 - 기본 상태 (중복확인) */
+.checkButtonDefault {
+  background-color: var(--border-color);
+  color: var(--text-color);
+}
+.checkButtonDefault:hover:not(:disabled) {
+  background-color: #555;
+}
+
+/* 중복 확인 버튼 - 성공 상태 (확인됨) */
+.checkButtonSuccess {
+  background-color: var(--success-color);
+  color: var(--card-background);
+  pointer-events: none; /* 확인되면 클릭 불가 */
+}
+
+/* 메인 버튼 (회원가입) */
+.submitButton {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+/* 버튼 비활성화 상태 */
+.submitButton:disabled {
+  background-color: var(--disabled-bg);
+  color: #999;
+  cursor: not-allowed;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #eee;
+}
+
+/* 로그인 텍스트 */
+.loginText {
+  margin-top: 25px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.loginLink {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.loginLink:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 반응형 디자인 (Responsive)                     */
+/* -------------------------------------------------------------------------- */
+
+/* 태블릿 (Tablet) 스타일 (768px 이하에서 적용) */
+@media (max-width: 768px) {
+  .signupCard {
+    max-width: 350px;
+    padding: 30px;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+  }
+
+  .input,
+  .submitButton {
+    padding: 12px 15px;
+    font-size: 0.95rem;
+  }
+}
+
+/* 모바일 (Mobile) 스타일 (480px 이하에서 적용) */
+@media (max-width: 480px) {
+  .signupCard {
+    padding: 25px;
+    max-width: 100%;
+    margin: 0 10px;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    margin-bottom: 20px;
+  }
+
+  .input {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .checkButton {
+    height: 38px; /* 모바일 크기에 맞게 버튼 높이 조정 */
+    padding: 0 10px;
+  }
+
+  .submitButton {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}
