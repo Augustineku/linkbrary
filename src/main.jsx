@@ -7,8 +7,8 @@ import Signup from "./Signup.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Login />
-    <br></br>
     <Signup />
+    <br></br>
+    <Login />
   </StrictMode>
 );
